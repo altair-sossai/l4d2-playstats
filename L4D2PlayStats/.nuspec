@@ -9,6 +9,7 @@
         <owners>altairsossai</owners>
         <projectUrl>https://github.com/altair-sossai/l4d2-playstats</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/altair-sossai/l4d2-playstats/main/assets/icon.png</iconUrl>
+        <readmeUrl>https://raw.githubusercontent.com/altair-sossai/l4d2-playstats/main/README.md</readmeUrl>
         <frameworkReferences>
             <group targetFramework="net6.0" />
         </frameworkReferences>
