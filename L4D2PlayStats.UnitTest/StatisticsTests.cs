@@ -17,7 +17,7 @@ public class StatisticsTests
         using var stream = assembly.GetManifestResourceStream(resourceName)!;
         using var streamReader = new StreamReader(stream, Encoding.UTF8);
         var content = streamReader.ReadToEnd();
-
+        Console.WriteLine(content);
         var statistics = new Statistics(content);
 
         statistics.GameRound.Should().NotBeNull();

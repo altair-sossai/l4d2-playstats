@@ -6,7 +6,7 @@ public class Statistics
 {
     public Statistics(string content)
     {
-        var lines = content.Split('\n');
+        var lines = content.Split('\n').Select(l => l.Trim());
         var queue = new Queue<string>(lines);
 
         while (queue.Any())
@@ -27,13 +27,13 @@ public class Statistics
 
             else if (Regex.IsMatch(line, @"\[Players:\w\]"))
             {
-                while (!string.IsNullOrEmpty(queue.Peek()))
+                while (queue.Any() && !string.IsNullOrEmpty(queue.Peek()))
                     AddPlayer(new Player(queue.Dequeue()));
             }
 
             else if (Regex.IsMatch(line, @"\[InfectedPlayers:\w\]"))
             {
-                while (!string.IsNullOrEmpty(queue.Peek()))
+                while (queue.Any() && !string.IsNullOrEmpty(queue.Peek()))
                     AddInfectedPlayer(new InfectedPlayer(queue.Dequeue()));
             }
 
@@ -42,7 +42,7 @@ public class Statistics
 
             else if (Regex.IsMatch(line, @"\[PlayerNames:\]"))
             {
-                while (!string.IsNullOrEmpty(queue.Peek()))
+                while (queue.Any() && !string.IsNullOrEmpty(queue.Peek()))
                     PlayerNames.Add(new PlayerName(queue.Dequeue()));
             }
         }
