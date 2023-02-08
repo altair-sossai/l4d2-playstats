@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L4D2PlayStats", "L4D2PlayStats\L4D2PlayStats.csproj", "{6EB56557-897D-4799-AEA3-5F764C45392E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L4D2PlayStats.UnitTest", "L4D2PlayStats.UnitTest\L4D2PlayStats.UnitTest.csproj", "{44DE5057-5658-4910-92E3-CE0D460BD918}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EB56557-897D-4799-AEA3-5F764C45392E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB56557-897D-4799-AEA3-5F764C45392E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB56557-897D-4799-AEA3-5F764C45392E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB56557-897D-4799-AEA3-5F764C45392E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44DE5057-5658-4910-92E3-CE0D460BD918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44DE5057-5658-4910-92E3-CE0D460BD918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44DE5057-5658-4910-92E3-CE0D460BD918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44DE5057-5658-4910-92E3-CE0D460BD918}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93B724C8-11BA-4D9F-AA39-AC5BC4778005}
+	EndGlobalSection
+EndGlobal
