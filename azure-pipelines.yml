@@ -9,13 +9,6 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-name: 1.0.0$(Rev:.r)
-
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-
 steps:
 - task: UseDotNet@2
   displayName: Use .NET 6.0
@@ -25,33 +18,26 @@ steps:
 
 - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
+  displayName: dotnet build
   inputs:
-    restoreSolution: '$(solution)'
+    command: 'build'
 
-- task: VSBuild@1
+- task: DotNetCoreCLI@2
+  displayName: dotnet test
   inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    command: 'test'
+    publishTestResults: false
 
-- task: VSTest@2
-  inputs:
-    testAssemblyVer2: |
-     **\*Test.dll
-     !**\*TestAdapter.dll
-     !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
+  displayName: dotnet pack
   inputs:
     command: 'pack'
-    packagesToPack: '**\\*.csproj;!**\\*.UnitTest.csproj'
-    packDestination: '$(Build.ArtifactStagingDirectory)'
+    packagesToPack: '**/*.csproj'
     versioningScheme: 'byBuildNumber'
 
 - task: PublishBuildArtifacts@1
+  displayName: publishing...
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'package'
