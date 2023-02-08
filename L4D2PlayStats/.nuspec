@@ -11,14 +11,14 @@
         <authors>altairsossai@gmail.com</authors>
         <owners>altairsossai</owners>
         <projectUrl>https://github.com/altair-sossai/l4d2-playstats</projectUrl>
-        <icon>images\icon.png</icon>
-        <readme>docs\readme.md</readme>
+        <icon>images/icon.png</icon>
+        <readme>docs/readme.md</readme>
         <frameworkReferences>
             <group targetFramework="net6.0" />
         </frameworkReferences>
     </metadata>
     <files>
-        <file src="..\assets\icon.png" target="images\" />
-        <file src="..\README.md" target="docs\" />
+        <file src="../assets/icon.png" target="images" />
+        <file src="../README.md" target="docs" />
     </files>
 </package>
