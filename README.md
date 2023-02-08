@@ -1,6 +1,6 @@
 ﻿<div align="center">
 
-![L4D2](https://torneiol4d2.blob.core.windows.net/imgs/icon-256.png)
+![L4D2](https://raw.githubusercontent.com/altair-sossai/l4d2-playstats/main/assets/icon.png)
 
 </div>
 

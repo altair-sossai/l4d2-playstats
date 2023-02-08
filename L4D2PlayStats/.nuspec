@@ -8,7 +8,7 @@
         <authors>altairsossai@gmail.com</authors>
         <owners>altairsossai</owners>
         <projectUrl>https://github.com/altair-sossai/l4d2-playstats</projectUrl>
-        <iconUrl>https://torneiol4d2.blob.core.windows.net/imgs/icon-256.png</iconUrl>
+        <iconUrl>https://raw.githubusercontent.com/altair-sossai/l4d2-playstats/main/assets/icon.png</iconUrl>
         <frameworkReferences>
             <group targetFramework="net6.0" />
         </frameworkReferences>
