@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Text;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L4D2PlayStats.UnitTest;
@@ -14,7 +15,7 @@ public class StatisticsTests
         const string resourceName = "L4D2PlayStats.UnitTest.Statistics.2023-02-04_03-13_0011_c8m1_apartment.txt";
 
         using var stream = assembly.GetManifestResourceStream(resourceName)!;
-        using var streamReader = new StreamReader(stream);
+        using var streamReader = new StreamReader(stream, Encoding.UTF8);
         var content = streamReader.ReadToEnd();
 
         var statistics = new Statistics(content);
