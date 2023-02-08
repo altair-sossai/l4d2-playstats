@@ -9,6 +9,8 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+name: 1.0.0$(Rev:.r)
+
 steps:
 - task: UseDotNet@2
   displayName: Use .NET 6.0
