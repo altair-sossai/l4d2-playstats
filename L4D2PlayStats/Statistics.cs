@@ -90,6 +90,20 @@ public class Statistics
         half.InfectedPlayers.Add(infectedPlayer);
     }
 
+    public static bool TryParse(string content, out Statistics? statistics)
+    {
+        try
+        {
+            statistics = new Statistics(content);
+            return true;
+        }
+        catch (Exception)
+        {
+            statistics = null;
+            return false;
+        }
+    }
+
     public class Half
     {
         public RoundHalf? RoundHalf { get; internal set; }
