@@ -1,13 +1,10 @@
 ﻿using L4D2PlayStats.Extensions;
-using L4D2PlayStats.Structures;
+using L4D2PlayStats.Steam;
 
 namespace L4D2PlayStats;
 
-public class InfectedPlayer
+public class InfectedPlayer : SteamUser
 {
-    private SteamIdentifiers? _identifiers;
-    private string? _steamId;
-
     public InfectedPlayer(string line)
         : this(line.Queue())
     {
@@ -47,20 +44,6 @@ public class InfectedPlayer
 
     public int Index { get; }
     public int Client { get; }
-
-    public string? SteamId
-    {
-        get => _steamId;
-        set
-        {
-            _steamId = value;
-            _identifiers = SteamIdentifiers.TryParse(value ?? string.Empty, out var identifiers) ? identifiers : null;
-        }
-    }
-
-    public long? CommunityId => _identifiers?.CommunityId;
-    public string? Steam3 => _identifiers?.Steam3;
-    public string? ProfileUrl => _identifiers?.ProfileUrl;
     public int DmgTotal { get; }
     public int DmgUpright { get; }
     public int DmgTank { get; }
