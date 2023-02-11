@@ -17,7 +17,8 @@ public class PlayerTests
         player.Client.Should().Be(8);
         player.SteamId.Should().Be("STEAM_1:0:15152893");
         player.CommunityId.Should().Be(76561197990571514);
-        player.Steam3.Should().Be("[U:1:30305786]");
+        player.Steam3.Should().Be("[U:1:30305786]"); 
+        player.ProfileUrl.Should().Be("https://steamcommunity.com/profiles/76561197990571514");
         player.ShotsShotgun.Should().Be(0);
         player.ShotsSmg.Should().Be(58);
         player.ShotsSniper.Should().Be(0);

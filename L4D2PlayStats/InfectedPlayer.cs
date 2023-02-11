@@ -60,6 +60,7 @@ public class InfectedPlayer
 
     public long? CommunityId => _identifiers?.CommunityId;
     public string? Steam3 => _identifiers?.Steam3;
+    public string? ProfileUrl => _identifiers?.ProfileUrl;
     public int DmgTotal { get; }
     public int DmgUpright { get; }
     public int DmgTank { get; }

@@ -31,4 +31,9 @@ public static class SteamIdHelper
 
         return $"[U:1:{authserver}]";
     }
+
+    public static string? ProfileUrl(long communityId)
+    {
+        return communityId <= 0 ? null : $"https://steamcommunity.com/profiles/{communityId}";
+    }
 }

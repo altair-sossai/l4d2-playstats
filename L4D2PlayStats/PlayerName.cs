@@ -34,5 +34,6 @@ public class PlayerName
 
     public long? CommunityId => _identifiers?.CommunityId;
     public string? Steam3 => _identifiers?.Steam3;
+    public string? ProfileUrl => _identifiers?.ProfileUrl;
     public string? Name { get; }
 }

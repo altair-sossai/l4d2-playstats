@@ -11,6 +11,7 @@ public struct SteamIdentifiers
 
     public long? CommunityId { get; }
     public string? Steam3 => SteamIdHelper.CommunityIdToSteam3(CommunityId ?? 0);
+    public string? ProfileUrl => SteamIdHelper.ProfileUrl(CommunityId ?? 0);
     public bool HasValue => CommunityId is > 0;
 
     public static bool TryParse(string value, out SteamIdentifiers steamIdentifiers)

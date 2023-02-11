@@ -112,6 +112,7 @@ public class Player
 
     public long? CommunityId => _identifiers?.CommunityId;
     public string? Steam3 => _identifiers?.Steam3;
+    public string? ProfileUrl => _identifiers?.ProfileUrl;
     public int ShotsShotgun { get; }
     public int ShotsSmg { get; }
     public int ShotsSniper { get; }
