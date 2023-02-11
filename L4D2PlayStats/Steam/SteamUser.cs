@@ -17,7 +17,7 @@ public abstract class SteamUser
         }
     }
 
-    public long? CommunityId => _identifiers?.CommunityId;
+    public string? CommunityId => _identifiers?.CommunityId?.ToString();
     public string? Steam3 => _identifiers?.Steam3;
     public string? ProfileUrl => _identifiers?.ProfileUrl;
 }

@@ -16,7 +16,7 @@ public class InfectedPlayerTests
         infectedPlayer.Index.Should().Be(1);
         infectedPlayer.Client.Should().Be(5);
         infectedPlayer.SteamId.Should().Be("STEAM_1:1:57113046");
-        infectedPlayer.CommunityId.Should().Be(76561198074491821);
+        infectedPlayer.CommunityId.Should().Be("76561198074491821");
         infectedPlayer.Steam3.Should().Be("[U:1:114226093]");
         infectedPlayer.ProfileUrl.Should().Be("https://steamcommunity.com/profiles/76561198074491821");
         infectedPlayer.DmgTotal.Should().Be(43);
