@@ -167,10 +167,10 @@ public class Player : SteamUser
     public int FfTakenTotal { get; }
     public int Clears { get; }
     public int AvgClearTime { get; }
-    public DateTime TimeStartPresent { get; }
-    public DateTime TimeStopPresent { get; }
-    public DateTime TimeStartAlive { get; }
-    public DateTime TimeStopAlive { get; }
-    public DateTime TimeStartUpright { get; }
-    public DateTime TimeStopUpright { get; }
+    public DateTime? TimeStartPresent { get; }
+    public DateTime? TimeStopPresent { get; }
+    public DateTime? TimeStartAlive { get; }
+    public DateTime? TimeStopAlive { get; }
+    public DateTime? TimeStartUpright { get; }
+    public DateTime? TimeStopUpright { get; }
 }

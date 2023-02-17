@@ -21,7 +21,7 @@ public static class QueueExtensions
         return decimal.Parse(queue.Dequeue(), CultureInfo);
     }
 
-    public static DateTime DequeueAsDateTime(this Queue<string> queue)
+    public static DateTime? DequeueAsDateTime(this Queue<string> queue)
     {
         return queue.DequeueAsLong().ToDateTime();
     }

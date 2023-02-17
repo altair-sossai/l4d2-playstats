@@ -2,10 +2,10 @@
 
 public static class LongExtensions
 {
-    public static DateTime ToDateTime(this long value)
+    public static DateTime? ToDateTime(this long value)
     {
         if (value <= 0)
-            return DateTime.MinValue;
+            return null;
 
         var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 

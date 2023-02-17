@@ -67,6 +67,6 @@ public class InfectedPlayer : SteamUser
     public int SpawnSpitter { get; }
     public int SpawnJockey { get; }
     public int TankPasses { get; }
-    public DateTime TimeStartPresent { get; }
-    public DateTime TimeStopPresent { get; }
+    public DateTime? TimeStartPresent { get; }
+    public DateTime? TimeStopPresent { get; }
 }

@@ -49,10 +49,10 @@ public class RoundHalf
     public int Incaps { get; }
     public int Deaths { get; }
     public int FfDamageTotal { get; }
-    public DateTime StartTime { get; }
-    public DateTime EndTime { get; }
-    public DateTime StartTimePause { get; }
-    public DateTime StopTimePause { get; }
-    public DateTime StartTimeTank { get; }
-    public DateTime StopTimeTank { get; }
+    public DateTime? StartTime { get; }
+    public DateTime? EndTime { get; }
+    public DateTime? StartTimePause { get; }
+    public DateTime? StopTimePause { get; }
+    public DateTime? StartTimeTank { get; }
+    public DateTime? StopTimeTank { get; }
 }
