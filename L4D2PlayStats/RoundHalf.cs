@@ -4,55 +4,55 @@ namespace L4D2PlayStats;
 
 public class RoundHalf
 {
-	public RoundHalf(string line)
-		: this(line.Queue())
-	{
-	}
+    public RoundHalf(string line)
+        : this(line.Queue())
+    {
+    }
 
-	private RoundHalf(Queue<string> queue)
-	{
-		Round = queue.DequeueAsInt();
-		Team = queue.DequeueAsChar();
-		Restarts = queue.DequeueAsInt();
-		PillsUsed = queue.DequeueAsInt();
-		KitsUsed = queue.DequeueAsInt();
-		DefibsUsed = queue.DequeueAsInt();
-		Common = queue.DequeueAsInt();
-		SiKilled = queue.DequeueAsInt();
-		SiDamage = queue.DequeueAsInt();
-		SiSpawned = queue.DequeueAsInt();
-		WitchKilled = queue.DequeueAsInt();
-		TankKilled = queue.DequeueAsInt();
-		Incaps = queue.DequeueAsInt();
-		Deaths = queue.DequeueAsInt();
-		FfDamageTotal = queue.DequeueAsInt();
-		StartTime = queue.DequeueAsDateTime();
-		EndTime = queue.DequeueAsDateTime();
-		StartTimePause = queue.DequeueAsDateTime();
-		StopTimePause = queue.DequeueAsDateTime();
-		StartTimeTank = queue.DequeueAsDateTime();
-		StopTimeTank = queue.DequeueAsDateTime();
-	}
+    private RoundHalf(Queue<string> queue)
+    {
+        Round = queue.DequeueAsInt();
+        Team = queue.DequeueAsChar();
+        Restarts = queue.DequeueAsInt();
+        PillsUsed = queue.DequeueAsInt();
+        KitsUsed = queue.DequeueAsInt();
+        DefibsUsed = queue.DequeueAsInt();
+        Common = queue.DequeueAsInt();
+        SiKilled = queue.DequeueAsInt();
+        SiDamage = queue.DequeueAsInt();
+        SiSpawned = queue.DequeueAsInt();
+        WitchKilled = queue.DequeueAsInt();
+        TankKilled = queue.DequeueAsInt();
+        Incaps = queue.DequeueAsInt();
+        Deaths = queue.DequeueAsInt();
+        FfDamageTotal = queue.DequeueAsInt();
+        StartTime = queue.DequeueAsDateTime();
+        EndTime = queue.DequeueAsDateTime();
+        StartTimePause = queue.DequeueAsDateTime();
+        StopTimePause = queue.DequeueAsDateTime();
+        StartTimeTank = queue.DequeueAsDateTime();
+        StopTimeTank = queue.DequeueAsDateTime();
+    }
 
-	public int Round { get; }
-	public char Team { get; }
-	public int Restarts { get; }
-	public int PillsUsed { get; }
-	public int KitsUsed { get; }
-	public int DefibsUsed { get; }
-	public int Common { get; }
-	public int SiKilled { get; }
-	public int SiDamage { get; }
-	public int SiSpawned { get; }
-	public int WitchKilled { get; }
-	public int TankKilled { get; }
-	public int Incaps { get; }
-	public int Deaths { get; }
-	public int FfDamageTotal { get; }
-	public DateTime? StartTime { get; }
-	public DateTime? EndTime { get; }
-	public DateTime? StartTimePause { get; }
-	public DateTime? StopTimePause { get; }
-	public DateTime? StartTimeTank { get; }
-	public DateTime? StopTimeTank { get; }
+    public int Round { get; }
+    public char Team { get; }
+    public int Restarts { get; }
+    public int PillsUsed { get; }
+    public int KitsUsed { get; }
+    public int DefibsUsed { get; }
+    public int Common { get; }
+    public int SiKilled { get; }
+    public int SiDamage { get; }
+    public int SiSpawned { get; }
+    public int WitchKilled { get; }
+    public int TankKilled { get; }
+    public int Incaps { get; }
+    public int Deaths { get; }
+    public int FfDamageTotal { get; }
+    public DateTime? StartTime { get; }
+    public DateTime? EndTime { get; }
+    public DateTime? StartTimePause { get; }
+    public DateTime? StopTimePause { get; }
+    public DateTime? StartTimeTank { get; }
+    public DateTime? StopTimeTank { get; }
 }
