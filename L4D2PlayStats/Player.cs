@@ -96,7 +96,8 @@ public class Player : SteamUser
 
     public int Index { get; }
     public int Client { get; }
-    public int ShotsShotgun { get; }
+    public string? PlayerName { get; internal set; }
+	public int ShotsShotgun { get; }
     public int ShotsSmg { get; }
     public int ShotsSniper { get; }
     public int ShotsPistol { get; }
