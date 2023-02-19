@@ -59,8 +59,9 @@ public class Statistics
     public List<PlayerName> TeamB { get; } = new();
     public DateTime? MapStart { get; private set; }
     public DateTime? MapEnd { get; private set; }
+    public TimeSpan? MapElapsed => MapStart == null || MapEnd == null ? null : MapEnd - MapStart;
 
-    public static bool TryParse(string content, out Statistics? statistics)
+	public static bool TryParse(string content, out Statistics? statistics)
     {
         try
         {
