@@ -48,6 +48,7 @@ public class Statistics
         }
 
         UpdatePlayerName();
+        UpdateRoundPeriod();
     }
 
     public GameRound? GameRound { get; }
@@ -56,6 +57,8 @@ public class Statistics
     public List<PlayerName> PlayerNames { get; } = new();
     public List<PlayerName> TeamA { get; } = new();
     public List<PlayerName> TeamB { get; } = new();
+    public DateTime? RoundStart { get; private set; }
+    public DateTime? RoundEnd { get; private set; }
 
     public static bool TryParse(string content, out Statistics? statistics)
     {
@@ -129,6 +132,21 @@ public class Statistics
             foreach (var infectedPlayer in half.InfectedPlayers.Where(player => !string.IsNullOrEmpty(player.CommunityId) && names.ContainsKey(player.CommunityId)))
                 infectedPlayer.PlayerName = names[infectedPlayer.CommunityId!].Name;
         }
+    }
+
+    private void UpdateRoundPeriod()
+    {
+        RoundStart = Halves
+            .Select(h => h.RoundHalf?.StartTime)
+            .Where(d => d != null)
+            .DefaultIfEmpty(null)
+            .Min();
+
+        RoundEnd = Halves
+            .Select(h => h.RoundHalf?.EndTime)
+            .Where(d => d != null)
+            .DefaultIfEmpty(null)
+            .Max();
     }
 
     public class Half
