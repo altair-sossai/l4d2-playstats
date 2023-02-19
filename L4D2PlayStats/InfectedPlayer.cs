@@ -70,4 +70,5 @@ public class InfectedPlayer : SteamUser
     public int TankPasses { get; }
     public DateTime? TimeStartPresent { get; }
     public DateTime? TimeStopPresent { get; }
+    public TimeSpan? TimePresentElapsed => TimeStartPresent == null || TimeStopPresent == null ? null : TimeStopPresent - TimeStartPresent;
 }

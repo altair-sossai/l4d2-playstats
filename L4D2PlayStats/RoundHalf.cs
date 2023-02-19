@@ -51,8 +51,11 @@ public class RoundHalf
     public int FfDamageTotal { get; }
     public DateTime? StartTime { get; }
     public DateTime? EndTime { get; }
-    public DateTime? StartTimePause { get; }
+    public TimeSpan? RoundElapsed => StartTime == null || EndTime == null ? null : EndTime - StartTime;
+	public DateTime? StartTimePause { get; }
     public DateTime? StopTimePause { get; }
-    public DateTime? StartTimeTank { get; }
+    public TimeSpan? PauseElapsed => StartTimePause == null || StopTimePause == null ? null : StopTimePause - StartTimePause;
+	public DateTime? StartTimeTank { get; }
     public DateTime? StopTimeTank { get; }
+    public TimeSpan? TankElapsed => StartTimeTank == null || StopTimeTank == null ? null : StopTimeTank - StartTimeTank;
 }

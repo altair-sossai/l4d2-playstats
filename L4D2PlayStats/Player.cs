@@ -170,8 +170,11 @@ public class Player : SteamUser
     public int AvgClearTime { get; }
     public DateTime? TimeStartPresent { get; }
     public DateTime? TimeStopPresent { get; }
+    public TimeSpan? TimePresentElapsed => TimeStartPresent == null || TimeStopPresent == null ? null : TimeStopPresent - TimeStartPresent;
     public DateTime? TimeStartAlive { get; }
     public DateTime? TimeStopAlive { get; }
+    public TimeSpan? TimeAliveElapsed => TimeStartAlive == null || TimeStopAlive == null ? null : TimeStopAlive - TimeStartAlive;
     public DateTime? TimeStartUpright { get; }
     public DateTime? TimeStopUpright { get; }
+    public TimeSpan? TimeUprightElapsed => TimeStartUpright == null || TimeStopUpright == null ? null : TimeStopUpright - TimeStartUpright;
 }
