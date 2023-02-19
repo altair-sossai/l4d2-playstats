@@ -54,6 +54,8 @@ public class Statistics
     public List<Half> Halves { get; } = new();
     public Scoring? Scoring { get; }
     public List<PlayerName> PlayerNames { get; } = new();
+    public List<PlayerName> TeamA { get; } = new();
+    public List<PlayerName> TeamB { get; } = new();
 
     public static bool TryParse(string content, out Statistics? statistics)
     {
@@ -110,15 +112,22 @@ public class Statistics
     {
         var names = PlayerNames
             .Where(p => !string.IsNullOrEmpty(p.CommunityId))
-            .ToDictionary(k => k.CommunityId!, v => v.Name);
+            .ToDictionary(k => k.CommunityId!, v => v);
 
         foreach (var half in Halves)
         {
+            var team = half.Progress?.Team == 'A' ? TeamA : TeamB;
+
             foreach (var player in half.Players.Where(player => !string.IsNullOrEmpty(player.CommunityId) && names.ContainsKey(player.CommunityId)))
-                player.PlayerName = names[player.CommunityId!];
+            {
+                var playerName = names[player.CommunityId!];
+
+                player.PlayerName = playerName.Name;
+                team.Add(playerName);
+            }
 
             foreach (var infectedPlayer in half.InfectedPlayers.Where(player => !string.IsNullOrEmpty(player.CommunityId) && names.ContainsKey(player.CommunityId)))
-                infectedPlayer.PlayerName = names[infectedPlayer.CommunityId!];
+                infectedPlayer.PlayerName = names[infectedPlayer.CommunityId!].Name;
         }
     }
 
