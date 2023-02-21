@@ -30,9 +30,12 @@ public class RoundHalfTests
         roundHalf.FfDamageTotal.Should().Be(36);
         roundHalf.StartTime.Should().Be(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc));
         roundHalf.EndTime.Should().Be(new DateTime(2023, 2, 4, 3, 13, 22, DateTimeKind.Utc));
+        roundHalf.RoundElapsed.Should().Be(new TimeSpan(0, 3, 16));
         roundHalf.StartTimePause.Should().BeNull();
         roundHalf.StopTimePause.Should().BeNull();
+        roundHalf.PauseElapsed.Should().BeNull();
         roundHalf.StartTimeTank.Should().Be(new DateTime(2023, 2, 4, 3, 11, 59, DateTimeKind.Utc));
         roundHalf.StopTimeTank.Should().Be(new DateTime(2023, 2, 4, 3, 13, 22, DateTimeKind.Utc));
+        roundHalf.TankElapsed.Should().Be(new TimeSpan(0, 1, 23));
     }
 }

@@ -61,7 +61,7 @@ public class Statistics
     public DateTime? MapEnd { get; private set; }
     public TimeSpan? MapElapsed => MapStart == null || MapEnd == null ? null : MapEnd - MapStart;
 
-	public static bool TryParse(string content, out Statistics? statistics)
+    public static bool TryParse(string content, out Statistics? statistics)
     {
         try
         {

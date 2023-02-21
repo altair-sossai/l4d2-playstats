@@ -44,5 +44,6 @@ public class InfectedPlayerTests
         infectedPlayer.TankPasses.Should().Be(0);
         infectedPlayer.TimeStartPresent.Should().Be(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc));
         infectedPlayer.TimeStopPresent.Should().Be(new DateTime(2023, 2, 4, 3, 13, 22, DateTimeKind.Utc));
+        infectedPlayer.TimePresentElapsed.Should().Be(new TimeSpan(0, 3, 16));
     }
 }

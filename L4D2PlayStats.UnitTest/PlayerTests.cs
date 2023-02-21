@@ -92,9 +92,12 @@ public class PlayerTests
         player.AvgClearTime.Should().Be(0);
         player.TimeStartPresent.Should().Be(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc));
         player.TimeStopPresent.Should().Be(new DateTime(2023, 2, 4, 3, 13, 22, DateTimeKind.Utc));
+        player.TimePresentElapsed.Should().Be(new TimeSpan(0, 3, 16));
         player.TimeStartAlive.Should().Be(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc));
         player.TimeStopAlive.Should().Be(new DateTime(2023, 2, 4, 3, 12, 39, DateTimeKind.Utc));
+        player.TimeAliveElapsed.Should().Be(new TimeSpan(0, 2, 33));
         player.TimeStartUpright.Should().Be(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc));
         player.TimeStopUpright.Should().Be(new DateTime(2023, 2, 4, 3, 12, 04, DateTimeKind.Utc));
+        player.TimeUprightElapsed.Should().Be(new TimeSpan(0, 1, 58));
     }
 }
