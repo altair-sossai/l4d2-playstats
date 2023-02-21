@@ -52,4 +52,30 @@ public class StatisticsTests
         secondHalf.Players.Should().HaveCount(4);
         secondHalf.InfectedPlayers.Should().HaveCount(4);
     }
+
+    [TestMethod]
+    public void TryParse_MustReturnTrueWhenContentIsValid()
+    {
+        var type = typeof(StatisticsTests);
+        var assembly = type.Assembly;
+        const string resourceName = "L4D2PlayStats.UnitTest.Statistics.2023-02-04_03-13_0011_c8m1_apartment.txt";
+
+        using var stream = assembly.GetManifestResourceStream(resourceName)!;
+        using var streamReader = new StreamReader(stream, Encoding.UTF8);
+        var content = streamReader.ReadToEnd();
+
+        Statistics.TryParse(content, out var statistics).Should().BeTrue();
+
+        statistics.Should().NotBeNull();
+    }
+
+    [TestMethod]
+    public void TryParse_MustReturnFalseWhenContentIsValid()
+    {
+        const string content = "";
+
+        Statistics.TryParse(content, out var statistics).Should().BeFalse();
+
+        statistics.Should().BeNull();
+    }
 }
