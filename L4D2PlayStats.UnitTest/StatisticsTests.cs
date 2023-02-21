@@ -24,6 +24,11 @@ public class StatisticsTests
         statistics.Halves.Should().HaveCount(2);
         statistics.Scoring.Should().NotBeNull();
         statistics.PlayerNames.Should().HaveCount(20);
+        statistics.TeamA.Should().HaveCount(4);
+        statistics.TeamB.Should().HaveCount(4);
+        statistics.MapStart.Should().Be(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc));
+        statistics.MapEnd.Should().Be(new DateTime(2023, 2, 4, 3, 18, 37, DateTimeKind.Utc));
+        statistics.MapElapsed.Should().Be(new TimeSpan(0, 8, 31));
 
         var firstHalf = statistics.Halves[0];
 
