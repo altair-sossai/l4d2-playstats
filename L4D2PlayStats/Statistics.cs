@@ -162,5 +162,13 @@ public class Statistics
         public Progress? Progress { get; internal set; }
         public List<Player> Players { get; } = new();
         public List<InfectedPlayer> InfectedPlayers { get; } = new();
+
+        public Player? MvpSiDamage => MvpsSiDamage.FirstOrDefault();
+        public Player? MvpCommon => MvpsCommon.FirstOrDefault();
+        public Player? LvpFfGiven => LvpsFfGiven.FirstOrDefault();
+
+        public IEnumerable<Player> MvpsSiDamage => Players.OrderByDescending(o => o.SiDamage);
+        public IEnumerable<Player> MvpsCommon => Players.OrderByDescending(o => o.Common);
+        public IEnumerable<Player> LvpsFfGiven => Players.OrderByDescending(o => o.FfGiven);
     }
 }
