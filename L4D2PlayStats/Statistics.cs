@@ -52,11 +52,11 @@ public class Statistics
     }
 
     public GameRound? GameRound { get; }
-    public List<Half> Halves { get; } = new();
+    public List<Half> Halves { get; } = [];
     public Scoring? Scoring { get; }
-    public List<PlayerName> PlayerNames { get; } = new();
-    public List<PlayerName> TeamA { get; } = new();
-    public List<PlayerName> TeamB { get; } = new();
+    public List<PlayerName> PlayerNames { get; } = [];
+    public List<PlayerName> TeamA { get; } = [];
+    public List<PlayerName> TeamB { get; } = [];
     public DateTime? MapStart { get; private set; }
     public DateTime? MapEnd { get; private set; }
     public TimeSpan? MapElapsed => MapStart == null || MapEnd == null ? null : MapEnd - MapStart;
@@ -160,8 +160,8 @@ public class Statistics
     {
         public RoundHalf? RoundHalf { get; internal set; }
         public Progress? Progress { get; internal set; }
-        public List<Player> Players { get; } = new();
-        public List<InfectedPlayer> InfectedPlayers { get; } = new();
+        public List<Player> Players { get; } = [];
+        public List<InfectedPlayer> InfectedPlayers { get; } = [];
 
         public Player? MvpSiDamage => MvpsSiDamage.FirstOrDefault();
         public Player? MvpCommon => MvpsCommon.FirstOrDefault();

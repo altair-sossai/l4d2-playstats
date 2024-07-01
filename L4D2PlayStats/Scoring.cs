@@ -18,17 +18,10 @@ public class Scoring
     public Team? TeamA { get; }
     public Team? TeamB { get; }
 
-    public class Team
+    public class Team(Queue<string> queue)
     {
-        public Team(Queue<string> queue)
-        {
-            Letter = queue.DequeueAsChar();
-            FirstScoresSet = queue.DequeueAsInt();
-            Score = queue.DequeueAsInt();
-        }
-
-        public char Letter { get; }
-        public int FirstScoresSet { get; }
-        public int Score { get; }
+        public char Letter { get; } = queue.DequeueAsChar();
+        public int FirstScoresSet { get; } = queue.DequeueAsInt();
+        public int Score { get; } = queue.DequeueAsInt();
     }
 }

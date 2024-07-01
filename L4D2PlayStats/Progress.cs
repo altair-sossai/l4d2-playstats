@@ -26,17 +26,11 @@ public class Progress
     public int Survived { get; }
     public int MaxCompletionScore { get; }
     public decimal MaxFlowDist { get; }
-    public List<Flow> Flows { get; } = new();
+    public List<Flow> Flows { get; } = [];
 
-    public class Flow
+    public class Flow(Queue<string> queue)
     {
-        public Flow(Queue<string> queue)
-        {
-            FarFlowDist = queue.DequeueAsDecimal();
-            CurFlowDist = queue.DequeueAsDecimal();
-        }
-
-        public decimal FarFlowDist { get; }
-        public decimal CurFlowDist { get; }
+        public decimal FarFlowDist { get; } = queue.DequeueAsDecimal();
+        public decimal CurFlowDist { get; } = queue.DequeueAsDecimal();
     }
 }
