@@ -1,4 +1,5 @@
-﻿using L4D2PlayStats.Extensions;
+﻿using L4D2PlayStats.Enums;
+using L4D2PlayStats.Extensions;
 using L4D2PlayStats.Steam;
 
 namespace L4D2PlayStats;
@@ -71,4 +72,40 @@ public class InfectedPlayer : SteamUser
     public DateTime? TimeStartPresent { get; }
     public DateTime? TimeStopPresent { get; }
     public TimeSpan? TimePresentElapsed => TimeStartPresent == null || TimeStopPresent == null ? null : TimeStopPresent - TimeStartPresent;
+
+    public long this[InfectedStats infectedStats]
+    {
+        get
+        {
+            return infectedStats switch
+            {
+                InfectedStats.DmgTotal => DmgTotal,
+                InfectedStats.DmgUpright => DmgUpright,
+                InfectedStats.DmgTank => DmgTank,
+                InfectedStats.DmgTankIncap => DmgTankIncap,
+                InfectedStats.DmgScratch => DmgScratch,
+                InfectedStats.DmgSpit => DmgSpit,
+                InfectedStats.DmgBoom => DmgBoom,
+                InfectedStats.DmgTankUp => DmgTankUp,
+                InfectedStats.HunterDPs => HunterDPs,
+                InfectedStats.HunterDpDmg => HunterDpDmg,
+                InfectedStats.JockeyDPs => JockeyDPs,
+                InfectedStats.DeathCharges => DeathCharges,
+                InfectedStats.Booms => Booms,
+                InfectedStats.Ledged => Ledged,
+                InfectedStats.Common => Common,
+                InfectedStats.Spawns => Spawns,
+                InfectedStats.SpawnSmoker => SpawnSmoker,
+                InfectedStats.SpawnBoomer => SpawnBoomer,
+                InfectedStats.SpawnHunter => SpawnHunter,
+                InfectedStats.SpawnCharger => SpawnCharger,
+                InfectedStats.SpawnSpitter => SpawnSpitter,
+                InfectedStats.SpawnJockey => SpawnJockey,
+                InfectedStats.TankPasses => TankPasses,
+                InfectedStats.TimeStartPresent => TimeStartPresent.ToUnixTimeSeconds(),
+                InfectedStats.TimeStopPresent => TimeStopPresent.ToUnixTimeSeconds(),
+                _ => throw new ArgumentOutOfRangeException(nameof(infectedStats), infectedStats, null)
+            };
+        }
+    }
 }

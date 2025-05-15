@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L4D2PlayStats.UnitTest;
 
@@ -14,15 +13,15 @@ public class ScoringTests
         var scoring = new Scoring(line);
 
         var teamA = scoring.TeamA;
-        teamA.Should().NotBeNull();
-        teamA!.Letter.Should().Be('A');
-        teamA.FirstScoresSet.Should().Be(-1443);
-        teamA.Score.Should().Be(301);
+        Assert.IsNotNull(teamA);
+        Assert.AreEqual('A', teamA.Letter);
+        Assert.AreEqual(-1443, teamA.FirstScoresSet);
+        Assert.AreEqual(301, teamA.Score);
 
         var teamB = scoring.TeamB;
-        teamB.Should().NotBeNull();
-        teamB!.Letter.Should().Be('B');
-        teamB.FirstScoresSet.Should().Be(-1501);
-        teamB.Score.Should().Be(392);
+        Assert.IsNotNull(teamB);
+        Assert.AreEqual('B', teamB.Letter);
+        Assert.AreEqual(-1501, teamB.FirstScoresSet);
+        Assert.AreEqual(392, teamB.Score);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L4D2PlayStats.UnitTest;
@@ -20,37 +19,31 @@ public class StatisticsTests
 
         var statistics = new Statistics(content);
 
-        statistics.GameRound.Should().NotBeNull();
-        statistics.Halves.Should().HaveCount(2);
-        statistics.Scoring.Should().NotBeNull();
-        statistics.PlayerNames.Should().HaveCount(20);
-        statistics.TeamA.Should().HaveCount(4);
-        statistics.TeamB.Should().HaveCount(4);
-        statistics.MapStart.Should().Be(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc));
-        statistics.MapEnd.Should().Be(new DateTime(2023, 2, 4, 3, 18, 37, DateTimeKind.Utc));
-        statistics.MapElapsed.Should().Be(new TimeSpan(0, 8, 31));
+        Assert.IsNotNull(statistics.GameRound);
+        Assert.AreEqual(2, statistics.Halves.Count);
+        Assert.IsNotNull(statistics.Scoring);
+        Assert.AreEqual(20, statistics.PlayerNames.Count);
+        Assert.AreEqual(4, statistics.TeamA.Count);
+        Assert.AreEqual(4, statistics.TeamB.Count);
+        Assert.AreEqual(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc), statistics.MapStart);
+        Assert.AreEqual(new DateTime(2023, 2, 4, 3, 18, 37, DateTimeKind.Utc), statistics.MapEnd);
+        Assert.AreEqual(new TimeSpan(0, 8, 31), statistics.MapElapsed);
 
         var firstHalf = statistics.Halves[0];
-
-        firstHalf.RoundHalf.Should().NotBeNull();
-        firstHalf.RoundHalf!.Round.Should().Be(0);
-
-        firstHalf.Progress.Should().NotBeNull();
-        firstHalf.Progress!.Round.Should().Be(0);
-
-        firstHalf.Players.Should().HaveCount(4);
-        firstHalf.InfectedPlayers.Should().HaveCount(4);
+        Assert.IsNotNull(firstHalf.RoundHalf);
+        Assert.AreEqual(0, firstHalf.RoundHalf!.Round);
+        Assert.IsNotNull(firstHalf.Progress);
+        Assert.AreEqual(0, firstHalf.Progress!.Round);
+        Assert.AreEqual(4, firstHalf.Players.Count);
+        Assert.AreEqual(4, firstHalf.InfectedPlayers.Count);
 
         var secondHalf = statistics.Halves[1];
-
-        secondHalf.RoundHalf.Should().NotBeNull();
-        secondHalf.RoundHalf!.Round.Should().Be(1);
-
-        secondHalf.Progress.Should().NotBeNull();
-        secondHalf.Progress!.Round.Should().Be(1);
-
-        secondHalf.Players.Should().HaveCount(4);
-        secondHalf.InfectedPlayers.Should().HaveCount(4);
+        Assert.IsNotNull(secondHalf.RoundHalf);
+        Assert.AreEqual(1, secondHalf.RoundHalf!.Round);
+        Assert.IsNotNull(secondHalf.Progress);
+        Assert.AreEqual(1, secondHalf.Progress!.Round);
+        Assert.AreEqual(4, secondHalf.Players.Count);
+        Assert.AreEqual(4, secondHalf.InfectedPlayers.Count);
     }
 
     [TestMethod]
@@ -64,18 +57,20 @@ public class StatisticsTests
         using var streamReader = new StreamReader(stream, Encoding.UTF8);
         var content = streamReader.ReadToEnd();
 
-        Statistics.TryParse(content, out var statistics).Should().BeTrue();
+        var result = Statistics.TryParse(content, out var statistics);
 
-        statistics.Should().NotBeNull();
+        Assert.IsTrue(result);
+        Assert.IsNotNull(statistics);
     }
 
     [TestMethod]
-    public void TryParse_MustReturnFalseWhenContentIsValid()
+    public void TryParse_MustReturnFalseWhenContentIsInvalid()
     {
         const string content = "";
 
-        Statistics.TryParse(content, out var statistics).Should().BeFalse();
+        var result = Statistics.TryParse(content, out var statistics);
 
-        statistics.Should().BeNull();
+        Assert.IsFalse(result);
+        Assert.IsNull(statistics);
     }
 }

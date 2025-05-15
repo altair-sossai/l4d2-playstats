@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L4D2PlayStats.UnitTest;
 
@@ -13,11 +12,11 @@ public class PlayerNameTests
 
         var playerName = new PlayerName(line);
 
-        playerName.Index.Should().Be(5);
-        playerName.SteamId.Should().Be("STEAM_1:0:90628109");
-        playerName.CommunityId.Should().Be("76561198141521946");
-        playerName.Steam3.Should().Be("[U:1:181256218]");
-        playerName.ProfileUrl.Should().Be("https://steamcommunity.com/profiles/76561198141521946");
-        playerName.Name.Should().Be(";Alt;air;");
+        Assert.AreEqual(5, playerName.Index);
+        Assert.AreEqual("STEAM_1:0:90628109", playerName.SteamId);
+        Assert.AreEqual("76561198141521946", playerName.CommunityId);
+        Assert.AreEqual("[U:1:181256218]", playerName.Steam3);
+        Assert.AreEqual("https://steamcommunity.com/profiles/76561198141521946", playerName.ProfileUrl);
+        Assert.AreEqual(";Alt;air;", playerName.Name);
     }
 }

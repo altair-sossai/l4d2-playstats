@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using L4D2PlayStats.Enums;
+using L4D2PlayStats.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L4D2PlayStats.UnitTest;
@@ -13,29 +14,49 @@ public class RoundHalfTests
 
         var roundHalf = new RoundHalf(line);
 
-        roundHalf.Round.Should().Be(0);
-        roundHalf.Team.Should().Be('A');
-        roundHalf.Restarts.Should().Be(0);
-        roundHalf.PillsUsed.Should().Be(3);
-        roundHalf.KitsUsed.Should().Be(0);
-        roundHalf.DefibsUsed.Should().Be(0);
-        roundHalf.Common.Should().Be(145);
-        roundHalf.SiKilled.Should().Be(16);
-        roundHalf.SiDamage.Should().Be(4721);
-        roundHalf.SiSpawned.Should().Be(20);
-        roundHalf.WitchKilled.Should().Be(1);
-        roundHalf.TankKilled.Should().Be(0);
-        roundHalf.Incaps.Should().Be(4);
-        roundHalf.Deaths.Should().Be(1);
-        roundHalf.FfDamageTotal.Should().Be(36);
-        roundHalf.StartTime.Should().Be(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc));
-        roundHalf.EndTime.Should().Be(new DateTime(2023, 2, 4, 3, 13, 22, DateTimeKind.Utc));
-        roundHalf.RoundElapsed.Should().Be(new TimeSpan(0, 3, 16));
-        roundHalf.StartTimePause.Should().BeNull();
-        roundHalf.StopTimePause.Should().BeNull();
-        roundHalf.PauseElapsed.Should().BeNull();
-        roundHalf.StartTimeTank.Should().Be(new DateTime(2023, 2, 4, 3, 11, 59, DateTimeKind.Utc));
-        roundHalf.StopTimeTank.Should().Be(new DateTime(2023, 2, 4, 3, 13, 22, DateTimeKind.Utc));
-        roundHalf.TankElapsed.Should().Be(new TimeSpan(0, 1, 23));
+        Assert.AreEqual(0, roundHalf.Round);
+        Assert.AreEqual('A', roundHalf.Team);
+        Assert.AreEqual(0, roundHalf.Restarts);
+        Assert.AreEqual(3, roundHalf.PillsUsed);
+        Assert.AreEqual(0, roundHalf.KitsUsed);
+        Assert.AreEqual(0, roundHalf.DefibsUsed);
+        Assert.AreEqual(145, roundHalf.Common);
+        Assert.AreEqual(16, roundHalf.SiKilled);
+        Assert.AreEqual(4721, roundHalf.SiDamage);
+        Assert.AreEqual(20, roundHalf.SiSpawned);
+        Assert.AreEqual(1, roundHalf.WitchKilled);
+        Assert.AreEqual(0, roundHalf.TankKilled);
+        Assert.AreEqual(4, roundHalf.Incaps);
+        Assert.AreEqual(1, roundHalf.Deaths);
+        Assert.AreEqual(36, roundHalf.FfDamageTotal);
+        Assert.AreEqual(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc), roundHalf.StartTime);
+        Assert.AreEqual(new DateTime(2023, 2, 4, 3, 13, 22, DateTimeKind.Utc), roundHalf.EndTime);
+        Assert.AreEqual(new TimeSpan(0, 3, 16), roundHalf.RoundElapsed);
+        Assert.IsNull(roundHalf.StartTimePause);
+        Assert.IsNull(roundHalf.StopTimePause);
+        Assert.IsNull(roundHalf.PauseElapsed);
+        Assert.AreEqual(new DateTime(2023, 2, 4, 3, 11, 59, DateTimeKind.Utc), roundHalf.StartTimeTank);
+        Assert.AreEqual(new DateTime(2023, 2, 4, 3, 13, 22, DateTimeKind.Utc), roundHalf.StopTimeTank);
+        Assert.AreEqual(new TimeSpan(0, 1, 23), roundHalf.TankElapsed);
+
+        Assert.AreEqual(roundHalf.Restarts, roundHalf[RoundStats.Restarts]);
+        Assert.AreEqual(roundHalf.PillsUsed, roundHalf[RoundStats.PillsUsed]);
+        Assert.AreEqual(roundHalf.KitsUsed, roundHalf[RoundStats.KitsUsed]);
+        Assert.AreEqual(roundHalf.DefibsUsed, roundHalf[RoundStats.DefibsUsed]);
+        Assert.AreEqual(roundHalf.Common, roundHalf[RoundStats.Common]);
+        Assert.AreEqual(roundHalf.SiKilled, roundHalf[RoundStats.SiKilled]);
+        Assert.AreEqual(roundHalf.SiDamage, roundHalf[RoundStats.SiDamage]);
+        Assert.AreEqual(roundHalf.SiSpawned, roundHalf[RoundStats.SiSpawned]);
+        Assert.AreEqual(roundHalf.WitchKilled, roundHalf[RoundStats.WitchKilled]);
+        Assert.AreEqual(roundHalf.TankKilled, roundHalf[RoundStats.TankKilled]);
+        Assert.AreEqual(roundHalf.Incaps, roundHalf[RoundStats.Incaps]);
+        Assert.AreEqual(roundHalf.Deaths, roundHalf[RoundStats.Deaths]);
+        Assert.AreEqual(roundHalf.FfDamageTotal, roundHalf[RoundStats.FfDamageTotal]);
+        Assert.AreEqual(roundHalf.StartTime.ToUnixTimeSeconds(), roundHalf[RoundStats.StartTime]);
+        Assert.AreEqual(roundHalf.EndTime.ToUnixTimeSeconds(), roundHalf[RoundStats.EndTime]);
+        Assert.AreEqual(roundHalf.StartTimePause.ToUnixTimeSeconds(), roundHalf[RoundStats.StartTimePause]);
+        Assert.AreEqual(roundHalf.StopTimePause.ToUnixTimeSeconds(), roundHalf[RoundStats.StopTimePause]);
+        Assert.AreEqual(roundHalf.StartTimeTank.ToUnixTimeSeconds(), roundHalf[RoundStats.StartTimeTank]);
+        Assert.AreEqual(roundHalf.StopTimeTank.ToUnixTimeSeconds(), roundHalf[RoundStats.StopTimeTank]);
     }
 }

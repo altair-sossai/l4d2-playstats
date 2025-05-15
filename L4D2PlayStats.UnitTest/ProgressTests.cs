@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L4D2PlayStats.UnitTest;
 
@@ -13,25 +12,27 @@ public class ProgressTests
 
         var progress = new Progress(line);
 
-        progress.Round.Should().Be(0);
-        progress.Team.Should().Be('A');
-        progress.Survived.Should().Be(0);
-        progress.MaxCompletionScore.Should().Be(400);
-        progress.MaxFlowDist.Should().Be(11629.93m);
-        progress.Flows.Should().HaveCount(4);
+        Assert.AreEqual(0, progress.Round);
+        Assert.AreEqual('A', progress.Team);
+        Assert.AreEqual(0, progress.Survived);
+        Assert.AreEqual(400, progress.MaxCompletionScore);
+        Assert.AreEqual(11629.93m, progress.MaxFlowDist);
+
+        Assert.IsNotNull(progress.Flows);
+        Assert.AreEqual(4, progress.Flows.Count);
 
         var flows = progress.Flows;
 
-        flows[0].FarFlowDist.Should().Be(7333.72m);
-        flows[0].CurFlowDist.Should().Be(9998.64m);
+        Assert.AreEqual(7333.72m, flows[0].FarFlowDist);
+        Assert.AreEqual(9998.64m, flows[0].CurFlowDist);
 
-        flows[1].FarFlowDist.Should().Be(9998.64m);
-        flows[1].CurFlowDist.Should().Be(7277.55m);
+        Assert.AreEqual(9998.64m, flows[1].FarFlowDist);
+        Assert.AreEqual(7277.55m, flows[1].CurFlowDist);
 
-        flows[2].FarFlowDist.Should().Be(8428.84m);
-        flows[2].CurFlowDist.Should().Be(8428.84m);
+        Assert.AreEqual(8428.84m, flows[2].FarFlowDist);
+        Assert.AreEqual(8428.84m, flows[2].CurFlowDist);
 
-        flows[3].FarFlowDist.Should().Be(7926.63m);
-        flows[3].CurFlowDist.Should().Be(9998.64m);
+        Assert.AreEqual(7926.63m, flows[3].FarFlowDist);
+        Assert.AreEqual(9998.64m, flows[3].CurFlowDist);
     }
 }

@@ -1,4 +1,5 @@
-﻿using L4D2PlayStats.Extensions;
+﻿using L4D2PlayStats.Enums;
+using L4D2PlayStats.Extensions;
 
 namespace L4D2PlayStats;
 
@@ -58,4 +59,34 @@ public class RoundHalf
     public DateTime? StartTimeTank { get; }
     public DateTime? StopTimeTank { get; }
     public TimeSpan? TankElapsed => StartTimeTank == null || StopTimeTank == null ? null : StopTimeTank - StartTimeTank;
+
+    public long this[RoundStats roundStats]
+    {
+        get
+        {
+            return roundStats switch
+            {
+                RoundStats.Restarts => Restarts,
+                RoundStats.PillsUsed => PillsUsed,
+                RoundStats.KitsUsed => KitsUsed,
+                RoundStats.DefibsUsed => DefibsUsed,
+                RoundStats.Common => Common,
+                RoundStats.SiKilled => SiKilled,
+                RoundStats.SiDamage => SiDamage,
+                RoundStats.SiSpawned => SiSpawned,
+                RoundStats.WitchKilled => WitchKilled,
+                RoundStats.TankKilled => TankKilled,
+                RoundStats.Incaps => Incaps,
+                RoundStats.Deaths => Deaths,
+                RoundStats.FfDamageTotal => FfDamageTotal,
+                RoundStats.StartTime => StartTime.ToUnixTimeSeconds(),
+                RoundStats.EndTime => EndTime.ToUnixTimeSeconds(),
+                RoundStats.StartTimePause => StartTimePause.ToUnixTimeSeconds(),
+                RoundStats.StopTimePause => StopTimePause.ToUnixTimeSeconds(),
+                RoundStats.StartTimeTank => StartTimeTank.ToUnixTimeSeconds(),
+                RoundStats.StopTimeTank => StopTimeTank.ToUnixTimeSeconds(),
+                _ => throw new ArgumentOutOfRangeException(nameof(roundStats), roundStats, null)
+            };
+        }
+    }
 }
