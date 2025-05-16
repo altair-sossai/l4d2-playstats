@@ -14,10 +14,17 @@ public abstract class SteamUser
         {
             _steamId = value;
             _identifiers = SteamIdentifiers.TryParse(value ?? string.Empty, out var identifiers) ? identifiers : null;
+
+            if (_identifiers == null)
+                return;
+
+            CommunityId = _identifiers.Value.CommunityId?.ToString();
+            Steam3 = _identifiers.Value.Steam3;
+            ProfileUrl = _identifiers.Value.ProfileUrl;
         }
     }
 
-    public string? CommunityId => _identifiers?.CommunityId?.ToString();
-    public string? Steam3 => _identifiers?.Steam3;
-    public string? ProfileUrl => _identifiers?.ProfileUrl;
+    public string? CommunityId { get; set; }
+    public string? Steam3 { get; set; }
+    public string? ProfileUrl { get; set; }
 }
