@@ -6,6 +6,10 @@ namespace L4D2PlayStats;
 
 public class InfectedPlayer : SteamUser
 {
+    public InfectedPlayer()
+    {
+    }
+
     public InfectedPlayer(string line)
         : this(line.Queue())
     {
@@ -43,34 +47,34 @@ public class InfectedPlayer : SteamUser
         TimeStopPresent = queue.DequeueAsDateTime();
     }
 
-    public int Index { get; }
-    public int Client { get; }
-    public string? PlayerName { get; internal set; }
-    public int DmgTotal { get; }
-    public int DmgUpright { get; }
-    public int DmgTank { get; }
-    public int DmgTankIncap { get; }
-    public int DmgScratch { get; }
-    public int DmgSpit { get; }
-    public int DmgBoom { get; }
-    public int DmgTankUp { get; }
-    public int HunterDPs { get; }
-    public int HunterDpDmg { get; }
-    public int JockeyDPs { get; }
-    public int DeathCharges { get; }
-    public int Booms { get; }
-    public int Ledged { get; }
-    public int Common { get; }
-    public int Spawns { get; }
-    public int SpawnSmoker { get; }
-    public int SpawnBoomer { get; }
-    public int SpawnHunter { get; }
-    public int SpawnCharger { get; }
-    public int SpawnSpitter { get; }
-    public int SpawnJockey { get; }
-    public int TankPasses { get; }
-    public DateTime? TimeStartPresent { get; }
-    public DateTime? TimeStopPresent { get; }
+    public int Index { get; set; }
+    public int Client { get; set; }
+    public string? PlayerName { get; set; }
+    public int DmgTotal { get; set; }
+    public int DmgUpright { get; set; }
+    public int DmgTank { get; set; }
+    public int DmgTankIncap { get; set; }
+    public int DmgScratch { get; set; }
+    public int DmgSpit { get; set; }
+    public int DmgBoom { get; set; }
+    public int DmgTankUp { get; set; }
+    public int HunterDPs { get; set; }
+    public int HunterDpDmg { get; set; }
+    public int JockeyDPs { get; set; }
+    public int DeathCharges { get; set; }
+    public int Booms { get; set; }
+    public int Ledged { get; set; }
+    public int Common { get; set; }
+    public int Spawns { get; set; }
+    public int SpawnSmoker { get; set; }
+    public int SpawnBoomer { get; set; }
+    public int SpawnHunter { get; set; }
+    public int SpawnCharger { get; set; }
+    public int SpawnSpitter { get; set; }
+    public int SpawnJockey { get; set; }
+    public int TankPasses { get; set; }
+    public DateTime? TimeStartPresent { get; set; }
+    public DateTime? TimeStopPresent { get; set; }
     public TimeSpan? TimePresentElapsed => TimeStartPresent == null || TimeStopPresent == null ? null : TimeStopPresent - TimeStartPresent;
 
     public long this[InfectedStats infectedStats]

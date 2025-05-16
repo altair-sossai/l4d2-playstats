@@ -7,6 +7,10 @@ public class GameRound
 {
     private static readonly CultureInfo CultureInfo = new("en-us");
 
+    public GameRound()
+    {
+    }
+
     public GameRound(string line)
         : this(line.Queue())
     {
@@ -26,9 +30,9 @@ public class GameRound
         MapName = queue.Dequeue();
     }
 
-    public int Round { get; }
-    public DateTime When { get; }
-    public int TeamSize { get; }
-    public string? ConfigurationName { get; }
-    public string? MapName { get; }
+    public int Round { get; set; }
+    public DateTime When { get; set; }
+    public int TeamSize { get; set; }
+    public string? ConfigurationName { get; set; }
+    public string? MapName { get; set; }
 }

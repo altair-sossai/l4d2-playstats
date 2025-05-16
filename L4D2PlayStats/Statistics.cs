@@ -4,6 +4,10 @@ namespace L4D2PlayStats;
 
 public class Statistics
 {
+    public Statistics()
+    {
+    }
+
     public Statistics(string content)
     {
         var lines = content.Split('\n').Select(l => l.Trim());
@@ -51,14 +55,14 @@ public class Statistics
         UpdateMapPeriod();
     }
 
-    public GameRound? GameRound { get; }
-    public List<Half> Halves { get; } = [];
-    public Scoring? Scoring { get; }
-    public List<PlayerName> PlayerNames { get; } = [];
-    public List<PlayerName> TeamA { get; } = [];
-    public List<PlayerName> TeamB { get; } = [];
-    public DateTime? MapStart { get; private set; }
-    public DateTime? MapEnd { get; private set; }
+    public GameRound? GameRound { get; set; }
+    public List<Half> Halves { get; set; } = [];
+    public Scoring? Scoring { get; set; }
+    public List<PlayerName> PlayerNames { get; set; } = [];
+    public List<PlayerName> TeamA { get; set; } = [];
+    public List<PlayerName> TeamB { get; set; } = [];
+    public DateTime? MapStart { get; set; }
+    public DateTime? MapEnd { get; set; }
     public TimeSpan? MapElapsed => MapStart == null || MapEnd == null ? null : MapEnd - MapStart;
 
     public static bool TryParse(string? content, out Statistics? statistics)
@@ -158,10 +162,10 @@ public class Statistics
 
     public class Half
     {
-        public RoundHalf? RoundHalf { get; internal set; }
-        public Progress? Progress { get; internal set; }
-        public List<Player> Players { get; } = [];
-        public List<InfectedPlayer> InfectedPlayers { get; } = [];
+        public RoundHalf? RoundHalf { get; set; }
+        public Progress? Progress { get; set; }
+        public List<Player> Players { get; set; } = [];
+        public List<InfectedPlayer> InfectedPlayers { get; set; } = [];
 
         public Player? MvpSiDamage => MvpsSiDamage.FirstOrDefault();
         public Player? MvpCommon => MvpsCommon.FirstOrDefault();

@@ -5,6 +5,10 @@ namespace L4D2PlayStats;
 
 public class RoundHalf
 {
+    public RoundHalf()
+    {
+    }
+
     public RoundHalf(string line)
         : this(line.Queue())
     {
@@ -35,29 +39,29 @@ public class RoundHalf
         StopTimeTank = queue.DequeueAsDateTime();
     }
 
-    public int Round { get; }
-    public char Team { get; }
-    public int Restarts { get; }
-    public int PillsUsed { get; }
-    public int KitsUsed { get; }
-    public int DefibsUsed { get; }
-    public int Common { get; }
-    public int SiKilled { get; }
-    public int SiDamage { get; }
-    public int SiSpawned { get; }
-    public int WitchKilled { get; }
-    public int TankKilled { get; }
-    public int Incaps { get; }
-    public int Deaths { get; }
-    public int FfDamageTotal { get; }
-    public DateTime? StartTime { get; }
-    public DateTime? EndTime { get; }
+    public int Round { get; set; }
+    public char Team { get; set; }
+    public int Restarts { get; set; }
+    public int PillsUsed { get; set; }
+    public int KitsUsed { get; set; }
+    public int DefibsUsed { get; set; }
+    public int Common { get; set; }
+    public int SiKilled { get; set; }
+    public int SiDamage { get; set; }
+    public int SiSpawned { get; set; }
+    public int WitchKilled { get; set; }
+    public int TankKilled { get; set; }
+    public int Incaps { get; set; }
+    public int Deaths { get; set; }
+    public int FfDamageTotal { get; set; }
+    public DateTime? StartTime { get; set; }
+    public DateTime? EndTime { get; set; }
     public TimeSpan? RoundElapsed => StartTime == null || EndTime == null ? null : EndTime - StartTime;
-    public DateTime? StartTimePause { get; }
-    public DateTime? StopTimePause { get; }
+    public DateTime? StartTimePause { get; set; }
+    public DateTime? StopTimePause { get; set; }
     public TimeSpan? PauseElapsed => StartTimePause == null || StopTimePause == null ? null : StopTimePause - StartTimePause;
-    public DateTime? StartTimeTank { get; }
-    public DateTime? StopTimeTank { get; }
+    public DateTime? StartTimeTank { get; set; }
+    public DateTime? StopTimeTank { get; set; }
     public TimeSpan? TankElapsed => StartTimeTank == null || StopTimeTank == null ? null : StopTimeTank - StartTimeTank;
 
     public long this[RoundStats roundStats]

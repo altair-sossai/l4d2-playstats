@@ -4,6 +4,10 @@ namespace L4D2PlayStats;
 
 public class Progress
 {
+    public Progress()
+    {
+    }
+
     public Progress(string line)
         : this(line.Queue())
     {
@@ -21,16 +25,26 @@ public class Progress
             Flows.Add(new Flow(queue));
     }
 
-    public int Round { get; }
-    public char Team { get; }
-    public int Survived { get; }
-    public int MaxCompletionScore { get; }
-    public decimal MaxFlowDist { get; }
-    public List<Flow> Flows { get; } = [];
+    public int Round { get; set; }
+    public char Team { get; set; }
+    public int Survived { get; set; }
+    public int MaxCompletionScore { get; set; }
+    public decimal MaxFlowDist { get; set; }
+    public List<Flow> Flows { get; set; } = [];
 
-    public class Flow(Queue<string> queue)
+    public class Flow
     {
-        public decimal FarFlowDist { get; } = queue.DequeueAsDecimal();
-        public decimal CurFlowDist { get; } = queue.DequeueAsDecimal();
+        public Flow()
+        {
+        }
+
+        public Flow(Queue<string> queue)
+        {
+            FarFlowDist = queue.DequeueAsDecimal();
+            CurFlowDist = queue.DequeueAsDecimal();
+        }
+
+        public decimal FarFlowDist { get; set; }
+        public decimal CurFlowDist { get; set; }
     }
 }

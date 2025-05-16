@@ -5,6 +5,10 @@ namespace L4D2PlayStats;
 
 public class PlayerName : SteamUser
 {
+    public PlayerName()
+    {
+    }
+
     public PlayerName(string line)
         : this(line.Queue(3))
     {
@@ -17,6 +21,6 @@ public class PlayerName : SteamUser
         Name = queue.Dequeue();
     }
 
-    public int Index { get; }
-    public string? Name { get; }
+    public int Index { get; set; }
+    public string? Name { get; set; }
 }

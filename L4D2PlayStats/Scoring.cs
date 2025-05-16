@@ -4,6 +4,10 @@ namespace L4D2PlayStats;
 
 public class Scoring
 {
+    public Scoring()
+    {
+    }
+
     public Scoring(string line)
         : this(line.Queue())
     {
@@ -15,13 +19,24 @@ public class Scoring
         TeamB = new Team(queue);
     }
 
-    public Team? TeamA { get; }
-    public Team? TeamB { get; }
+    public Team? TeamA { get; set; }
+    public Team? TeamB { get; set; }
 
-    public class Team(Queue<string> queue)
+    public class Team
     {
-        public char Letter { get; } = queue.DequeueAsChar();
-        public int FirstScoresSet { get; } = queue.DequeueAsInt();
-        public int Score { get; } = queue.DequeueAsInt();
+        public Team()
+        {
+        }
+
+        public Team(Queue<string> queue)
+        {
+            Letter = queue.DequeueAsChar();
+            FirstScoresSet = queue.DequeueAsInt();
+            Score = queue.DequeueAsInt();
+        }
+
+        public char Letter { get; set; }
+        public int FirstScoresSet { get; set; }
+        public int Score { get; set; }
     }
 }
