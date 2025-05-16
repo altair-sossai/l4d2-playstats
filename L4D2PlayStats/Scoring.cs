@@ -21,6 +21,10 @@ public class Scoring
 
     public Team? TeamA { get; set; }
     public Team? TeamB { get; set; }
+    public int? ScoreDiff => Math.Abs((TeamA?.Score ?? 0) - (TeamB?.Score ?? 0));
+    public bool Draw => ScoreDiff == 0;
+    public bool TeamAWon => TeamA?.Score > TeamB?.Score;
+    public bool TeamBWon => TeamB?.Score > TeamA?.Score;
 
     public class Team
     {
