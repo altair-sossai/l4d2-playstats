@@ -4,13 +4,13 @@ namespace L4D2PlayStats.Steam;
 
 public abstract class SteamUser
 {
-    private readonly SteamIdentifiers? _identifiers;
-    private readonly string? _steamId;
+    private SteamIdentifiers? _identifiers;
+    private string? _steamId;
 
     public string? SteamId
     {
         get => _steamId;
-        protected init
+        set
         {
             _steamId = value;
             _identifiers = SteamIdentifiers.TryParse(value ?? string.Empty, out var identifiers) ? identifiers : null;
