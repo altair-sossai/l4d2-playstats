@@ -1,4 +1,5 @@
-﻿using L4D2PlayStats.Enums;
+﻿using System.Text;
+using L4D2PlayStats.Enums;
 using L4D2PlayStats.Extensions;
 using L4D2PlayStats.Steam;
 
@@ -111,5 +112,17 @@ public class InfectedPlayer : SteamUser
                 _ => throw new ArgumentOutOfRangeException(nameof(infectedStats), infectedStats, null)
             };
         }
+    }
+
+    public override string ToString()
+    {
+        var stringBuilder = new StringBuilder();
+
+        stringBuilder.Append($"{Index};{Client};{SteamId};");
+
+        for (var infectedStats = InfectedStats.DmgTotal; infectedStats <= InfectedStats.TimeStopPresent; infectedStats++)
+            stringBuilder.Append($"{this[infectedStats]};");
+
+        return stringBuilder.ToString();
     }
 }
