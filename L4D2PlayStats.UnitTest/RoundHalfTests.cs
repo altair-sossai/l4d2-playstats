@@ -58,5 +58,7 @@ public class RoundHalfTests
         Assert.AreEqual(roundHalf.StopTimePause.ToUnixTimeSeconds(), roundHalf[RoundStats.StopTimePause]);
         Assert.AreEqual(roundHalf.StartTimeTank.ToUnixTimeSeconds(), roundHalf[RoundStats.StartTimeTank]);
         Assert.AreEqual(roundHalf.StopTimeTank.ToUnixTimeSeconds(), roundHalf[RoundStats.StopTimeTank]);
+
+        Assert.AreEqual(line, roundHalf.ToString());
     }
 }

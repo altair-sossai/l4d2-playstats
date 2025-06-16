@@ -1,4 +1,5 @@
-﻿using L4D2PlayStats.Enums;
+﻿using System.Text;
+using L4D2PlayStats.Enums;
 using L4D2PlayStats.Extensions;
 
 namespace L4D2PlayStats;
@@ -92,5 +93,17 @@ public class RoundHalf
                 _ => throw new ArgumentOutOfRangeException(nameof(roundStats), roundStats, null)
             };
         }
+    }
+
+    public override string ToString()
+    {
+        var stringBuilder = new StringBuilder();
+
+        stringBuilder.Append($"{Round};{Team};");
+
+        for (var shotsShotgun = RoundStats.Restarts; shotsShotgun <= RoundStats.StopTimeTank; shotsShotgun++)
+            stringBuilder.Append($"{this[shotsShotgun]};");
+
+        return stringBuilder.ToString();
     }
 }
