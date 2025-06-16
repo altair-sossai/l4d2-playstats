@@ -23,5 +23,7 @@ public class ScoringTests
         Assert.AreEqual('B', teamB.Letter);
         Assert.AreEqual(-1501, teamB.FirstScoresSet);
         Assert.AreEqual(392, teamB.Score);
+
+        Assert.AreEqual(line, scoring.ToString());
     }
 }

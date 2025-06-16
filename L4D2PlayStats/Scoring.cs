@@ -26,6 +26,11 @@ public class Scoring
     public bool TeamAWon => TeamA?.Score > TeamB?.Score;
     public bool TeamBWon => TeamB?.Score > TeamA?.Score;
 
+    public override string ToString()
+    {
+        return $"{TeamA}{TeamB}";
+    }
+
     public class Team
     {
         public Team()
@@ -42,5 +47,10 @@ public class Scoring
         public char Letter { get; set; }
         public int FirstScoresSet { get; set; }
         public int Score { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Letter};{FirstScoresSet};{Score};";
+        }
     }
 }
