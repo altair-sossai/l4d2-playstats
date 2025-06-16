@@ -34,5 +34,7 @@ public class ProgressTests
 
         Assert.AreEqual(7926.63m, flows[3].FarFlowDist);
         Assert.AreEqual(9998.64m, flows[3].CurFlowDist);
+
+        Assert.AreEqual(line, progress.ToString());
     }
 }

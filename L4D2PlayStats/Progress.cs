@@ -32,6 +32,11 @@ public class Progress
     public decimal MaxFlowDist { get; set; }
     public List<Flow> Flows { get; set; } = [];
 
+    public override string ToString()
+    {
+        return $"{Round};{Team};{Survived};{MaxCompletionScore};{MaxFlowDist};{string.Join(";", Flows)};";
+    }
+
     public class Flow
     {
         public Flow()
@@ -46,5 +51,10 @@ public class Progress
 
         public decimal FarFlowDist { get; set; }
         public decimal CurFlowDist { get; set; }
+
+        public override string ToString()
+        {
+            return $"{FarFlowDist};{CurFlowDist}";
+        }
     }
 }
