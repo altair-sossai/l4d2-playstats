@@ -35,4 +35,9 @@ public class GameRound
     public int TeamSize { get; set; }
     public string? ConfigurationName { get; set; }
     public string? MapName { get; set; }
+
+    public override string ToString()
+    {
+        return $"{Round};{When:yyyy-MM-dd};{When:HH:mm};{TeamSize};{ConfigurationName};{MapName};";
+    }
 }
