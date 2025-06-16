@@ -44,6 +44,8 @@ public class StatisticsTests
         Assert.AreEqual(1, secondHalf.Progress!.Round);
         Assert.AreEqual(4, secondHalf.Players.Count);
         Assert.AreEqual(4, secondHalf.InfectedPlayers.Count);
+
+        Assert.AreEqual(content, statistics.ToString());
     }
 
     [TestMethod]

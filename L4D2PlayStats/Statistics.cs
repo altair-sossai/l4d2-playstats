@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace L4D2PlayStats;
 
@@ -160,6 +161,38 @@ public class Statistics
             .Max();
     }
 
+    public override string ToString()
+    {
+        var stringBuilder = new StringBuilder();
+
+        if (GameRound != null)
+        {
+            stringBuilder.Append($"[Gameround:{GameRound.Round}]\n");
+            stringBuilder.Append($"{GameRound}\n\n");
+        }
+
+        foreach (var half in Halves)
+            stringBuilder.Append(half);
+
+        if (Scoring != null)
+        {
+            stringBuilder.Append("[Scoring:]\n");
+            stringBuilder.Append($"{Scoring}\n\n");
+        }
+
+        if (PlayerNames.Any())
+        {
+            stringBuilder.Append("[PlayerNames:]:\n");
+
+            foreach (var playerName in PlayerNames)
+                stringBuilder.Append($"{playerName}\n");
+
+            stringBuilder.Append("\n");
+        }
+
+        return stringBuilder.ToString();
+    }
+
     public class Half
     {
         public RoundHalf? RoundHalf { get; set; }
@@ -174,5 +207,44 @@ public class Statistics
         public IEnumerable<Player> MvpsSiDamage => Players.OrderByDescending(o => o.SiDamage);
         public IEnumerable<Player> MvpsCommon => Players.OrderByDescending(o => o.Common);
         public IEnumerable<Player> LvpsFfGiven => Players.OrderByDescending(o => o.FfGiven);
+
+        public override string ToString()
+        {
+            if (RoundHalf == null)
+                return string.Empty;
+
+            var stringBuilder = new StringBuilder();
+
+            stringBuilder.Append($"[RoundHalf:{RoundHalf.Round}]\n");
+            stringBuilder.Append($"{RoundHalf}\n\n");
+
+            if (Progress != null)
+            {
+                stringBuilder.Append($"[Progress:{RoundHalf.Team}]\n");
+                stringBuilder.Append($"{Progress}\n\n");
+            }
+
+            if (Players.Any())
+            {
+                stringBuilder.Append($"[Players:{RoundHalf.Team}]:\n");
+
+                foreach (var player in Players)
+                    stringBuilder.Append($"{player}\n");
+
+                stringBuilder.Append("\n");
+            }
+
+            if (InfectedPlayers.Any())
+            {
+                stringBuilder.Append($"[InfectedPlayers:{RoundHalf.Team}]:\n");
+
+                foreach (var infectedPlayer in InfectedPlayers)
+                    stringBuilder.Append($"{infectedPlayer}\n");
+
+                stringBuilder.Append("\n");
+            }
+
+            return stringBuilder.ToString();
+        }
     }
 }
