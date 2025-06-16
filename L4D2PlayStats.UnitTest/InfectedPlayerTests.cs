@@ -74,6 +74,6 @@ public class InfectedPlayerTests
         Assert.AreEqual(infectedPlayer.TimeStartPresent.ToUnixTimeSeconds(), infectedPlayer[InfectedStats.TimeStartPresent]);
         Assert.AreEqual(infectedPlayer.TimeStopPresent.ToUnixTimeSeconds(), infectedPlayer[InfectedStats.TimeStopPresent]);
 
-        Assert.AreEqual(infectedPlayer.ToString(), line);
+        Assert.AreEqual(line, infectedPlayer.ToString());
     }
 }

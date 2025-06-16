@@ -18,6 +18,6 @@ public class GameRoundTests
         Assert.AreEqual("VanillaMod v2.8", gameRound.ConfigurationName);
         Assert.AreEqual("c8m1_apartment", gameRound.MapName);
 
-        Assert.AreEqual(gameRound.ToString(), line);
+        Assert.AreEqual(line, gameRound.ToString());
     }
 }

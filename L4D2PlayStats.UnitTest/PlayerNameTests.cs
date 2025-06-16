@@ -19,6 +19,6 @@ public class PlayerNameTests
         Assert.AreEqual("https://steamcommunity.com/profiles/76561198141521946", playerName.ProfileUrl);
         Assert.AreEqual(";Alt;air;", playerName.Name);
 
-        Assert.AreEqual(playerName.ToString(), line);
+        Assert.AreEqual(line, playerName.ToString());
     }
 }
