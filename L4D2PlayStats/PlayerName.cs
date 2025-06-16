@@ -23,4 +23,9 @@ public class PlayerName : SteamUser
 
     public int Index { get; set; }
     public string? Name { get; set; }
+
+    public override string ToString()
+    {
+        return $"{Index};{SteamId};{Name}";
+    }
 }
