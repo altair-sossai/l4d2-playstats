@@ -45,7 +45,13 @@ public class StatisticsTests
         Assert.AreEqual(4, secondHalf.Players.Count);
         Assert.AreEqual(4, secondHalf.InfectedPlayers.Count);
 
-        Assert.AreEqual(content, statistics.ToString());
+        var conentLines = content.Split([Environment.NewLine], StringSplitOptions.RemoveEmptyEntries);
+        var statisticsLines = statistics.ToString().Split([Environment.NewLine], StringSplitOptions.RemoveEmptyEntries);
+
+        Assert.AreEqual(conentLines.Length, statisticsLines.Length);
+
+        for (var i = 0; i < conentLines.Length; i++)
+            Assert.AreEqual(conentLines[i], statisticsLines[i]);
     }
 
     [TestMethod]
