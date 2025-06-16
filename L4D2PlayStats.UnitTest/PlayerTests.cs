@@ -178,5 +178,7 @@ public class PlayerTests
         Assert.AreEqual(player.TimeStopAlive.ToUnixTimeSeconds(), player[PlayerStats.TimeStopAlive]);
         Assert.AreEqual(player.TimeStartUpright.ToUnixTimeSeconds(), player[PlayerStats.TimeStartUpright]);
         Assert.AreEqual(player.TimeStopUpright.ToUnixTimeSeconds(), player[PlayerStats.TimeStopUpright]);
+
+        Assert.AreEqual(player.ToString(), line);
     }
 }

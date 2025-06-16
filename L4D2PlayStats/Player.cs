@@ -1,4 +1,5 @@
-﻿using L4D2PlayStats.Enums;
+﻿using System.Text;
+using L4D2PlayStats.Enums;
 using L4D2PlayStats.Extensions;
 using L4D2PlayStats.Steam;
 
@@ -269,5 +270,17 @@ public class Player : SteamUser
                 _ => throw new ArgumentOutOfRangeException(nameof(playerStats), playerStats, null)
             };
         }
+    }
+
+    public override string ToString()
+    {
+        var stringBuilder = new StringBuilder();
+
+        stringBuilder.Append($"{Index};{Client};{SteamId};");
+
+        for (var playerStats = PlayerStats.ShotsShotgun; playerStats <= PlayerStats.TimeStopUpright; playerStats++)
+            stringBuilder.Append($"{this[playerStats]};");
+
+        return stringBuilder.ToString();
     }
 }
