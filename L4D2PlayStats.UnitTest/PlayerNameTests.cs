@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace L4D2PlayStats.UnitTest;
+﻿namespace L4D2PlayStats.UnitTest;
 
 [TestClass]
 public class PlayerNameTests

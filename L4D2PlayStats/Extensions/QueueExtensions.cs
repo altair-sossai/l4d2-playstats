@@ -6,28 +6,31 @@ public static class QueueExtensions
 {
     private static readonly CultureInfo CultureInfo = new("en-us");
 
-    public static char DequeueAsChar(this Queue<string> queue)
+    extension(Queue<string> queue)
     {
-        return queue.Dequeue().First();
-    }
+        public char DequeueAsChar()
+        {
+            return queue.Dequeue().First();
+        }
 
-    public static int DequeueAsInt(this Queue<string> queue)
-    {
-        return int.Parse(queue.Dequeue());
-    }
+        public int DequeueAsInt()
+        {
+            return int.Parse(queue.Dequeue());
+        }
 
-    public static decimal DequeueAsDecimal(this Queue<string> queue)
-    {
-        return decimal.Parse(queue.Dequeue(), CultureInfo);
-    }
+        public decimal DequeueAsDecimal()
+        {
+            return decimal.Parse(queue.Dequeue(), CultureInfo);
+        }
 
-    public static DateTime? DequeueAsDateTime(this Queue<string> queue)
-    {
-        return queue.DequeueAsLong().ToDateTime();
-    }
+        public DateTime? DequeueAsDateTime()
+        {
+            return queue.DequeueAsLong().ToDateTime();
+        }
 
-    private static long DequeueAsLong(this Queue<string> queue)
-    {
-        return long.Parse(queue.Dequeue());
+        private long DequeueAsLong()
+        {
+            return long.Parse(queue.Dequeue());
+        }
     }
 }

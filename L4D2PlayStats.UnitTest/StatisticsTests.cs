@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L4D2PlayStats.UnitTest;
 

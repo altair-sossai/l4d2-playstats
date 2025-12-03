@@ -1,6 +1,5 @@
 ﻿using L4D2PlayStats.Enums;
 using L4D2PlayStats.Extensions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L4D2PlayStats.UnitTest;
 
