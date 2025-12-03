@@ -19,11 +19,11 @@ public class StatisticsTests
         var statistics = new Statistics(content);
 
         Assert.IsNotNull(statistics.GameRound);
-        Assert.AreEqual(2, statistics.Halves.Count);
+        Assert.HasCount(2, statistics.Halves);
         Assert.IsNotNull(statistics.Scoring);
-        Assert.AreEqual(20, statistics.PlayerNames.Count);
-        Assert.AreEqual(4, statistics.TeamA.Count);
-        Assert.AreEqual(4, statistics.TeamB.Count);
+        Assert.HasCount(20, statistics.PlayerNames);
+        Assert.HasCount(4, statistics.TeamA);
+        Assert.HasCount(4, statistics.TeamB);
         Assert.AreEqual(new DateTime(2023, 2, 4, 3, 10, 6, DateTimeKind.Utc), statistics.MapStart);
         Assert.AreEqual(new DateTime(2023, 2, 4, 3, 18, 37, DateTimeKind.Utc), statistics.MapEnd);
         Assert.AreEqual(new TimeSpan(0, 8, 31), statistics.MapElapsed);
@@ -33,23 +33,23 @@ public class StatisticsTests
         Assert.AreEqual(0, firstHalf.RoundHalf!.Round);
         Assert.IsNotNull(firstHalf.Progress);
         Assert.AreEqual(0, firstHalf.Progress!.Round);
-        Assert.AreEqual(4, firstHalf.Players.Count);
-        Assert.AreEqual(4, firstHalf.InfectedPlayers.Count);
+        Assert.HasCount(4, firstHalf.Players);
+        Assert.HasCount(4, firstHalf.InfectedPlayers);
 
         var secondHalf = statistics.Halves[1];
         Assert.IsNotNull(secondHalf.RoundHalf);
         Assert.AreEqual(1, secondHalf.RoundHalf!.Round);
         Assert.IsNotNull(secondHalf.Progress);
         Assert.AreEqual(1, secondHalf.Progress!.Round);
-        Assert.AreEqual(4, secondHalf.Players.Count);
-        Assert.AreEqual(4, secondHalf.InfectedPlayers.Count);
+        Assert.HasCount(4, secondHalf.Players);
+        Assert.HasCount(4, secondHalf.InfectedPlayers);
 
         char[] separator = ['\r', '\n'];
 
         var conentLines = content.Split(separator, StringSplitOptions.RemoveEmptyEntries);
         var statisticsLines = statistics.ToString().Split(separator, StringSplitOptions.RemoveEmptyEntries);
 
-        Assert.AreEqual(conentLines.Length, statisticsLines.Length);
+        Assert.HasCount(conentLines.Length, statisticsLines);
 
         for (var i = 0; i < conentLines.Length; i++)
             Assert.AreEqual(conentLines[i], statisticsLines[i]);

@@ -1,33 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <ParallelizeTestCollections>true</ParallelizeTestCollections>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+    <ItemGroup>
+        <None Remove="Statistics\2023-02-04_03-13_0011_c8m1_apartment.txt" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Statistics\2023-02-04_03-13_0011_c8m1_apartment.txt" />
-  </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Statistics\2023-02-04_03-13_0011_c8m1_apartment.txt" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Statistics\2023-02-04_03-13_0011_c8m1_apartment.txt" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+        <PackageReference Include="MSTest.TestAdapter" Version="4.0.2" />
+        <PackageReference Include="MSTest.TestFramework" Version="4.0.2" />
+        <PackageReference Include="coverlet.collector" Version="6.0.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-    <PackageReference Include="MSTest.TestAdapter" Version="4.0.2" />
-    <PackageReference Include="MSTest.TestFramework" Version="4.0.2" />
-    <PackageReference Include="coverlet.collector" Version="6.0.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\L4D2PlayStats\L4D2PlayStats.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\L4D2PlayStats\L4D2PlayStats.csproj" />
+    </ItemGroup>
 
 </Project>

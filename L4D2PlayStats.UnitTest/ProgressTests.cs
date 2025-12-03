@@ -17,7 +17,7 @@ public class ProgressTests
         Assert.AreEqual(11629.93m, progress.MaxFlowDist);
 
         Assert.IsNotNull(progress.Flows);
-        Assert.AreEqual(4, progress.Flows.Count);
+        Assert.HasCount(4, progress.Flows);
 
         var flows = progress.Flows;
 
