@@ -7,7 +7,7 @@ Permite extrair os dados dos arquivos de estatísticas gerados pelo plugin *l4d2
 [![Build Status](https://dev.azure.com/altairsossai/L4D2%20-%20Play%20Stats/_apis/build/status/build-l4d2-playstats?branchName=main)](https://dev.azure.com/altairsossai/L4D2%20-%20Play%20Stats/_build/latest?definitionId=30&branchName=main)
 [![NuGet](https://img.shields.io/nuget/v/L4D2PlayStats.svg)](https://www.nuget.org/packages/L4D2PlayStats)
 
-A biblioteca tem como alvo o **.NET 10** (`net10.0`) e não depende de outros pacotes.
+A biblioteca tem como alvo o **.NET 11** (`net11.0`) e não depende de outros pacotes.
 
 ## Instalação
 
@@ -143,7 +143,7 @@ Pequena amostra dos valores presentes na classe Statistics.
 ```
 
 ## Compilando e testando
-Requer o SDK do .NET 10.
+Requer o SDK do .NET 11.
 
 ```shell
 git clone https://github.com/altair-sossai/l4d2-playstats.git
