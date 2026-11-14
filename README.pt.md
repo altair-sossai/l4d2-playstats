@@ -4,7 +4,7 @@
 
 Permite extrair os dados dos arquivos de estatísticas gerados pelo plugin *l4d2_playstats.smx*.
 
-[![Build Status](https://dev.azure.com/altairsossai/L4D2%20-%20Play%20Stats/_apis/build/status/build-l4d2-playstats?branchName=main)](https://dev.azure.com/altairsossai/L4D2%20-%20Play%20Stats/_build/latest?definitionId=30&branchName=main)
+[![Build](https://github.com/altair-sossai/l4d2-playstats/actions/workflows/publish.yml/badge.svg)](https://github.com/altair-sossai/l4d2-playstats/actions/workflows/publish.yml)
 [![NuGet](https://img.shields.io/nuget/v/L4D2PlayStats.svg)](https://www.nuget.org/packages/L4D2PlayStats)
 
 A biblioteca tem como alvo o **.NET 11** (`net11.0`) e não depende de outros pacotes.
@@ -155,7 +155,7 @@ dotnet test
 Os testes (MSTest) ficam em `L4D2PlayStats.UnitTest`. `StatisticsTests` lê o arquivo de exemplo em `L4D2PlayStats.UnitTest/Statistics` e verifica que `ToString()` o reproduz linha a linha.
 
 ## Publicação
-O `azure-pipelines.yml` roda a cada push na `main`: compila, roda os testes, empacota a biblioteca usando o número do build como versão do pacote (`1.0.0.<revision>`, que sobrescreve o `<Version>` do csproj) e publica o `.nupkg` como o artefato de build `package`. O envio desse artefato para o nuget.org não é feito por esse arquivo.
+O `.github/workflows/publish.yml` roda a cada push na `main` (e compila e testa os pull requests): compila, roda os testes, empacota a biblioteca usando `1.0.0.<número da execução + 64>` como versão do pacote (que sobrescreve o `<Version>` do csproj) e, só na `main`, publica o `.nupkg` no nuget.org por NuGet Trusted Publishing (OIDC), então nenhuma API key fica guardada. A política de trusted publishing está registrada na conta `altairsossai` do nuget.org.
 
 Para criar e enviar um pacote por conta própria:
 

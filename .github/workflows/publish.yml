@@ -1,0 +1,66 @@
+name: Build, test and publish
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**/*.md"
+  pull_request:
+    branches: [main]
+
+env:
+  # The last version published by the old Azure DevOps pipeline was 1.0.0.64, so the first GitHub run publishes 1.0.0.65.
+  VERSION_OFFSET: 64
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 11.0.x
+
+      - name: Compute version
+        id: version
+        run: echo "version=1.0.0.$((VERSION_OFFSET + GITHUB_RUN_NUMBER))" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        run: dotnet build L4D2PlayStats.sln --configuration Release
+
+      - name: Test
+        run: dotnet test L4D2PlayStats.sln --configuration Release --no-build
+
+      - name: Pack
+        run: dotnet pack L4D2PlayStats/L4D2PlayStats.csproj --configuration Release --no-build -p:Version=${{ steps.version.outputs.version }} --output artifacts
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: package
+          path: artifacts/*.nupkg
+
+  publish:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: package
+          path: artifacts
+
+      - name: NuGet login (OIDC to temporary API key)
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: altairsossai
+
+      - name: NuGet push
+        run: dotnet nuget push "artifacts/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
